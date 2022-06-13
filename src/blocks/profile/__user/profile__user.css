@@ -1,0 +1,12 @@
+.profile__user {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: baseline;
+}
+
+@media screen and (max-width: 991px) {
+    .profile__user {
+        align-content: space-around;
+        margin: 22.25px auto 0;
+    }
+}

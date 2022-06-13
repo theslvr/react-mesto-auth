@@ -1,0 +1,12 @@
+.logo_place_header {
+  background: url(../../../images/logo_place_header.svg);
+}
+
+@media screen and (max-width: 991px) {
+  .logo_place_header {
+    background: url(../../../images/logo_place_header_mobile.svg);
+    margin-left: 27px;
+    margin-right: 27px;
+    align-self: flex-start;
+  }
+}

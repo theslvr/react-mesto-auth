@@ -1,0 +1,5 @@
+.header__hamburger_hidden {
+  background-image: url('../../../../images/Close_Icon.svg');
+  width: 20px;
+  align-self: flex-end;
+}

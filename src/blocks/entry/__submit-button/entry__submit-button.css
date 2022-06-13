@@ -1,0 +1,28 @@
+.entry__submit-button {
+  margin-top: 186px;
+  background-color: var(--main-color);
+  border-radius: 2px;
+  border: none;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 1.21;
+  width: 358px;
+  height: 50px;
+}
+
+.entry__submit-button:hover {
+  cursor: pointer;
+  opacity: .85;
+}
+
+@media screen and (max-width: 991px) {
+  .entry__submit-button {
+    margin: 143px auto 0 auto;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 1.21;
+    max-width: 260px;
+    width: 100%;
+    height: 46px;
+  }
+}

@@ -1,0 +1,8 @@
+.entry__footer-link {
+  text-decoration: none;
+  color: var(--main-color);
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 1.21;
+}
+

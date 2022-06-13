@@ -1,0 +1,14 @@
+.entry__form {
+  margin: 0 auto;
+  padding-top: 60px;
+  display: flex;
+  flex-direction: column;
+  width: 358px;
+}
+
+@media screen and (max-width: 991px) {
+  .entry__form {
+    padding: 40px 0 0;
+    width: 100%;
+  }
+}

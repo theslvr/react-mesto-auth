@@ -1,0 +1,7 @@
+.elements__like-inner {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    max-width: 22px;
+    max-height: 31px;
+}

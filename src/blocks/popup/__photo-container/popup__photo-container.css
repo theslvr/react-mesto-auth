@@ -1,0 +1,13 @@
+.popup__photo-container {
+  margin: 0 auto;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+@media screen and (max-width: 991px) {
+  .popup__photo-container {
+    padding: 25px 22px;
+    width: 282px;
+  }
+}
