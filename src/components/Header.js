@@ -1,16 +1,7 @@
 import { NavLink, Route, Switch } from 'react-router-dom'
 import { useState } from 'react'
 
-function Header({ setLoggedIn, email, loggedIn }) {
-  function logOut() {
-    localStorage.removeItem('jwt')
-    setLoggedIn(false)
-    setHamburgerActive(false)
-    setEmailAndExitHidden(true)
-  }
-
-  const [isHamburgerActive, setHamburgerActive] = useState(false)
-  const [isEmailAndExitHidden, setEmailAndExitHidden] = useState(true)
+function Header({ setLoggedIn, email, loggedIn, isHamburgerActive, isEmailAndExitHidden, setHamburgerActive, setEmailAndExitHidden, logOut }) {
 
   const handleClickOnHamburger = () => {
     if (isHamburgerActive) {

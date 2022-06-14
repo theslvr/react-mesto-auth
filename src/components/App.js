@@ -31,6 +31,8 @@ function App() {
   const [isInfoTooltipPopupOpen, setInfoTooltipPopupOpen] = useState(false)
   const [regSuccess, setRegSuccess] = useState(false)
   const [email, setEmail] = useState('')
+  const [isHamburgerActive, setHamburgerActive] = useState(false)
+  const [isEmailAndExitHidden, setEmailAndExitHidden] = useState(true)
   const history = useHistory()
 
   useEffect(() => {
@@ -71,7 +73,7 @@ function App() {
     api
       .changeLikeCardStatus(card._id, !isLiked)
       .then((newCard) => {
-        setCards((state) => state.map((c) => (c._id === card._id ? newCard : c)))
+        setCards((state) => state.filter((c) => c._id !== card._id))
       })
       .catch((err) => {
         console.log(`Ошибка: ${err}`)
@@ -144,8 +146,8 @@ function App() {
   }
 
   const checkToken = () => {
-    let token = localStorage.getItem('jwt')
-    if (localStorage.getItem('jwt')) {
+    const token = localStorage.getItem('jwt')
+    if (token) {
       getContent(token)
         .then((res) => {
           setEmail(res.data.email)
@@ -177,9 +179,9 @@ function App() {
         if (res.token) {
           setRegSuccess(true)
           localStorage.setItem('jwt', res.token)
-          checkToken()
+          setLoggedIn(true)
+          setEmail(email)
         }
-        setLoggedIn(true)
       })
       .catch(() => {
         setInfoTooltipPopupOpen(true)
@@ -188,10 +190,27 @@ function App() {
       .finally(() => setRenderLoading(false))
   }
 
+  const logOut = () => {
+    localStorage.removeItem('jwt')
+    setLoggedIn(false)
+    setHamburgerActive(false)
+    setEmailAndExitHidden(true)
+  }
+
+
   return (
     <div className="App page">
       <CurrentUserContext.Provider value={currentUser}>
-        <Header className="header" setLoggedIn={setLoggedIn} email={email} loggedIn={loggedIn} />
+        <Header className="header"
+                setLoggedIn={setLoggedIn}
+                email={email}
+                loggedIn={loggedIn}
+                isHamburgerActive={isHamburgerActive}
+                isEmailAndExitHidden={isEmailAndExitHidden}
+                setHamburgerActive={setHamburgerActive}
+                setEmailAndExitHidden={setEmailAndExitHidden}
+                logOut={logOut}
+        />
         <Switch>
           <ProtectedRoute exact path="/" loggedIn={loggedIn}>
             <Main
