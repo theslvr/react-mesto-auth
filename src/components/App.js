@@ -31,8 +31,7 @@ function App() {
   const [isInfoTooltipPopupOpen, setInfoTooltipPopupOpen] = useState(false)
   const [regSuccess, setRegSuccess] = useState(false)
   const [email, setEmail] = useState('')
-  const [isHamburgerActive, setHamburgerActive] = useState(false)
-  const [isEmailAndExitHidden, setEmailAndExitHidden] = useState(true)
+
   const history = useHistory()
 
   useEffect(() => {
@@ -73,7 +72,7 @@ function App() {
     api
       .changeLikeCardStatus(card._id, !isLiked)
       .then((newCard) => {
-        setCards((state) => state.filter((c) => c._id !== card._id))
+        setCards((state) => state.map((c) => (c._id === card._id ? newCard : c)))
       })
       .catch((err) => {
         console.log(`Ошибка: ${err}`)
@@ -193,8 +192,6 @@ function App() {
   const logOut = () => {
     localStorage.removeItem('jwt')
     setLoggedIn(false)
-    setHamburgerActive(false)
-    setEmailAndExitHidden(true)
   }
 
 
@@ -205,10 +202,6 @@ function App() {
                 setLoggedIn={setLoggedIn}
                 email={email}
                 loggedIn={loggedIn}
-                isHamburgerActive={isHamburgerActive}
-                isEmailAndExitHidden={isEmailAndExitHidden}
-                setHamburgerActive={setHamburgerActive}
-                setEmailAndExitHidden={setEmailAndExitHidden}
                 logOut={logOut}
         />
         <Switch>

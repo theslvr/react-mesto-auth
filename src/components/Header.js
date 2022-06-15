@@ -1,7 +1,10 @@
 import { NavLink, Route, Switch } from 'react-router-dom'
-import { useState } from 'react'
+import {useEffect, useState} from 'react'
 
-function Header({ setLoggedIn, email, loggedIn, isHamburgerActive, isEmailAndExitHidden, setHamburgerActive, setEmailAndExitHidden, logOut }) {
+function Header({ setLoggedIn, email, loggedIn, logOut }) {
+
+  const [isHamburgerActive, setHamburgerActive] = useState(false)
+  const [isEmailAndExitHidden, setEmailAndExitHidden] = useState(true)
 
   const handleClickOnHamburger = () => {
     if (isHamburgerActive) {
@@ -12,6 +15,13 @@ function Header({ setLoggedIn, email, loggedIn, isHamburgerActive, isEmailAndExi
       setEmailAndExitHidden(false)
     }
   }
+
+  useEffect(()=> {
+    if (!loggedIn) {
+      setHamburgerActive(false)
+      setEmailAndExitHidden(true)
+    }
+  },[loggedIn])
 
   return (
     <header className={`header ${isHamburgerActive ? 'header_active' : ''}`}>
